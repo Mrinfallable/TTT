@@ -21,7 +21,7 @@ public class Main{
         return false;}
     public static void main(String [] args){
         String[][] board = {{" ", " ", " "}, {" ", " ", " "}, {" ", " ", " "}};
-        String playerTurn = "X";
+        boolean playerTurn = false;
         Scanner shrek = new Scanner(System.in);
         int x = 0;
         int y = 0;
@@ -31,7 +31,12 @@ public class Main{
             x = shrek.nextInt();
             y = shrek.nextInt();
             if(x < 2 || y < 2){System.out.println("out of bounds!")}
-            board[x][y] = playerTurn;
+            if(!board[x][y].equals(" "){return};
+            if(playerTurn){
+                board[x][y] = "X";}
+            else{board[x][y] = "O";}
             if(checkBoard(board) && checkDiagonal(board) && checkHorizontal(board) && checkVerticle(board)){
                 System.out.println("player: " + playerTurn + " Wins!");
                 System.exit(0);}}}}
+            playerTurn = !playerTurn;
+
